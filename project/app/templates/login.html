@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSight - Login</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Forms de login e cadastro -->
+        <div class="half black" id="form-container">
+            <div class="login-form">
+                <h1 id="form-title">LOGIN</h1>
+                <span id="form-description">Entre com sua conta em SecureSight</span>
+                <form id="signin" class="form-active" action="{{ url_for('routes.login') }}" method="POST">
+                    <div class="input-container">
+                        <input type="email" id="email" name="email" placeholder="Email do usuário" required>
+                        <i class="fa-solid fa-envelope input-icon6"></i>
+                        <input type="password" id="password" name="password" placeholder="Senha do usuário" required>
+                        <i class="fa-solid fa-lock input-icon7"></i>
+                    </div>
+                    <input type="submit" value="Entre Agora!" name="Enter">
+                    <span id="toggle-form">Não tem conta?<a href="#" id="toggle-link-to-signup"> Cadastre-se Já!</a></span>
+                </form>
+                <form id="signup" class="form-inactive" action="{{ url_for('routes.signup') }}" method="POST">
+                    <div class="input-container">
+                        <input type="text" id="nome" name="nome" placeholder="Nome do usuário" required>
+                        <i class="fa-solid fa-user input-icon1"></i>
+                        <input type="email" id="signup_email" name="email" placeholder="Email do usuário" required>
+                        <i class="fa-solid fa-envelope input-icon2"></i>
+                        <input type="text" id="number" name="number" placeholder="Número de telefone" required>
+                        <i class="fa-solid fa-phone input-icon3"></i>
+                        <input type="password" id="signup_password" name="password" placeholder="Sua senha segura" required>
+                        <i class="fa-solid fa-lock input-icon4"></i>
+                        <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirmar Senha" required>
+                        <i class="fa-solid fa-lock input-icon5"></i>
+                    </div>
+                    <input type="submit" value="Registre-se" name="Enter">
+                    <div id="signupError" class="error-message" style="display: none;"></div>
+                    <span id="toggle-form" class="span2">Já tem uma conta?<a href="#" id="toggle-link-to-login"> Entre Já!</a></span>
+                </form>                
+            </div>
+        </div>
+        <div class="half red" id="info-container">
+            <div class="card" id="card-login">
+                <h1 id="card-title">Protegendo Hoje,<br>Garantindo sua<br>Tranquilidade<br>Amanhã.</h1>
+                <img src="{{ url_for('static', filename='images/undraw_fingerprint_login_re_t71l 1.svg') }}" alt="" class="image-content" id="image-content-login">
+                <img src="{{ url_for('static', filename='images/Group 11 (1).svg') }}" alt="" class="icon-img" id="icon-img-login">
+            </div>
+            <div class="card hidden" id="card-signup">
+                <h1 id="card-title">Sua jornada<br>Começa<br>Aqui,<br>Cadastre-se<br>já!</h1>
+                <img src="{{ url_for('static', filename='images/undraw_people_re_8spw 1.svg') }}" alt="" class="image-content" id="image-content-signup">
+                <img src="{{ url_for('static', filename='images/Group 11 (2).svg') }}" alt="" class="icon-img" id="icon-img-signup">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para planos ativos -->
+<div id="plan-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Você não possui planos ativos!</h2>
+        <p>Para continuar usando o sistema, por favor, escolha um plano.</p>
+        <a href="{{ url_for('routes.choose_plan') }}" class="btn">Escolha um Plano</a>
+        <p>Ou entre em contato com nosso suporte:</p>
+        <a href="mailto:securesight@yahoo.com">securesight@yahoo.com</a>
+    </div>
+</div>
+
+    <script src="{{ url_for('static', filename='javascript/login/login.js') }}"></script>
+    {% if show_plan_modal %}
+    
+        window.showPlanModal = true;
+    
+    {% endif %}
+    
+</body>
+</html>

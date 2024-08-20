@@ -1,0 +1,592 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.container {
+    height: 100%;
+    display: flex;
+}
+
+.half {
+    flex: 1;
+}
+
+.black {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.red {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(218deg, #9181F4 -5.84%, #5038ED 106.73%);
+    transition: background-image 0.3s ease-in-out;
+}
+
+.login-form {
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.login-form h1 {
+    color: #1C1C1C;
+    font-weight: bold;
+}
+
+.login-form span {
+    color: #1C1C1C;
+    padding-bottom: 50px;
+    font-weight: 400;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-container input {
+    width: 364px;
+    height: 52px;
+    border: none;
+    flex-shrink: 0;
+    border-radius: 16px;
+    background: #F0EDFF;  
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 40px;
+}
+
+.input-icon1 {
+    position: absolute;
+    top: 7%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+.input-icon2 {
+    position: absolute;
+    top: 28%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+.input-icon3 {
+    position: absolute;
+    top: 48%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+.input-icon4 {
+    position: absolute;
+    top: 68%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+.input-icon5 {
+    position: absolute;
+    top: 89%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+.input-icon6 {
+    position: absolute;
+    top: 18%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+.input-icon7 {
+    position: absolute;
+    top: 68%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #1C1C1C;
+}
+
+#signin, #signup {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#signin.form-active, #signup.form-active {
+    display: flex;
+}
+
+#signin input[type='submit'], #signup input[type='submit'] {
+    width: 124px;
+    height: 52px;
+    border-radius: 16px;
+    background: linear-gradient(100deg, #9181F4 -5.85%, #5038ED 109.55%);
+    box-shadow: 0px 8px 21px 0px rgba(0, 0, 0, 0.16);
+    border: 2px solid transparent;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
+}
+
+#signin input[type='submit']:hover {
+    width: 150px;
+    border-radius: 16px;
+    height: 60px;
+    border-image: linear-gradient(100deg, #9181F4, #5038ED) 1;
+    background: none;
+    color: transparent;
+    background: linear-gradient(100deg, #9181F4, #5038ED);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+form span {
+    color: #1C1C1C;
+    padding-top: 20px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+#signin span a {
+    text-decoration: none;
+    color: #5038ED;
+    cursor: pointer;
+}
+
+form input {
+    margin: 0 0 10px;
+
+}
+
+.card {
+    position: relative;
+    width: 412.653px;
+    height: 524px;
+    border-radius: 46px;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    background: rgba(255, 255, 255, 0.21);
+    backdrop-filter: blur(6.800000190734863px);
+}
+
+.card h1 {
+    color: white;
+    padding: 20px;
+}
+
+/* Estilização padrão para image-content */
+.card .image-content {
+    position: absolute;
+    top: 120px;
+    left: 75%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: auto;
+    transition: top 0.3s ease-in-out, left 0.3s ease-in-out, width 0.3s ease-in-out;
+}
+
+/* Estilização específica para image-content quando signup está ativo */
+.half.red.signup .image-content {
+    top: 220px; /* Ajuste a posição conforme necessário */
+    left: 50%;  /* Ajuste a posição conforme necessário */
+    width: 100%; /* Ajuste a largura conforme necessário */
+    height: auto; /* Ajuste a altura conforme necessário */
+}
+
+.card .icon-img {
+    position: absolute;
+    left: -40px;
+    bottom: 120px;
+    width: 75px;
+    height: auto;
+    margin: 0 0 20px;
+}
+
+/* CSS para animação de transição da página */
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Estilos para os formulários */
+.form-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form-inactive {
+    display: none;
+}
+
+#form-title-signup {
+    color: #1C1C1C;
+    font-weight: bold;
+}
+
+#form-description-signup {
+    color: #1C1C1C;
+    padding-top: 0;
+    padding-bottom: 50px;
+    font-weight: 400;
+}
+
+#signup input {
+    background-color: #FFF0ED;
+}
+
+#signup input[type='submit'] {
+    background: linear-gradient(100deg, #FF6F09 -5.85%, #ED3886 109.55%);
+}
+
+#signup input[type='submit']:hover {
+    width: 150px;
+    border-radius: 16px;
+    height: 60px;
+    border-image: linear-gradient(100deg, #FF6F09 -5.85%, #ED3886 109.55%) 1;
+    background: none;
+    color: transparent;
+    background: linear-gradient(100deg, #FF6F09 -5.85%, #ED3886 109.55%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#signup .span2 a {
+    color: #FF6F09;
+    text-decoration: none;
+}
+
+/* CSS para alteração de fundo ao clicar em cadastrar */
+.half.red {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.half.red.signup {
+    background-image: linear-gradient(218deg, #FF6F09, #ED3886);
+}
+
+/* Animações de transição */
+@keyframes slideUp {
+    0% {
+        opacity: 0;
+        transform: translateY(50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Adiciona animações aos formulários */
+#signin {
+    animation: slideUp 0.5s forwards;
+}
+
+#signup {
+    animation: slideRight 0.5s forwards;
+}
+
+.form-active {
+    display: block;
+}
+
+.form-inactive {
+    display: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.plans {
+    display: flex;
+    justify-content: center;
+}
+
+.plancards {
+    margin: 0 20px;
+    color: white;
+    background-color: #5038ED;
+    width: 220px;
+    height: 380px;
+    border-radius: 8px;
+    transition: 300ms ease-in-out;
+}
+
+.plancards:hover {
+    border: solid 1px rgba(134, 134, 134, 0.63);
+    color: #5038ED;
+    background-color: white;
+    padding-top: 10px;
+    height: 390px;
+}
+
+.planicon {
+    gap: 10px;
+    padding-left: 10px;
+    display: flex;
+    font-size: 11px;
+}
+
+.planicon span {
+    font-weight: 300;
+}
+
+.descr {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 10px;
+    padding-left: 10px;
+}
+
+.planprice {
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.planprice span {
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.include {
+    padding-bottom: 20px;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.features {
+    font-weight: 300;
+    font-size: 12px;
+    list-style: none;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.features li img {
+    width: 25px;
+}
+
+.features ul li {
+    align-items: center;
+    display: flex;
+    margin: 0 0 10px;
+}
+
+.now {
+    display: flex;
+    justify-content: center;
+}
+
+.now button {
+    border-radius: 8px;
+    border: none;
+    width: 150px;
+    height: 30px;
+    background: white;
+    color: #5038ED;
+    cursor: pointer;
+    transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+}
+
+.plancards:hover .now button {
+    background-color: #5038ED;
+    color: white;
+}
+
+.plan-title {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+.form-inactive {
+    display: none;
+}
+.form-active {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+.blue {
+    background: linear-gradient(100deg, #FF6F09 -5.85%, #ED3886 109.55%);
+    color: white;
+}
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+.container {
+    display: flex;
+}
+.half {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.card {
+    max-width: 400px;
+}
+.login-form {
+    max-width: 400px;
+}
+
+#image-content-signup {
+    width: 100%;
+    height: 250px;
+    margin-top: 155px;
+    margin-left: -100px;
+}
+
+.modal {
+    display: none; /* Esconde o modal por padrão */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+}

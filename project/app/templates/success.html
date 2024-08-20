@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento Aprovado</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/planos/success.css')}}">
+</head>
+<body>
+    <div class="container">
+        <h1>Pagamento Aprovado</h1>
+        <div class="checkbox-wrapper">
+            <input type="checkbox" checked="" />
+            <svg viewBox="0 0 35.6 35.6">
+              <circle r="17.8" cy="17.8" cx="17.8" class="background"></circle>
+              <circle r="14.37" cy="17.8" cx="17.8" class="stroke"></circle>
+              <polyline
+                points="11.78 18.12 15.55 22.23 25.17 12.87"
+                class="check"
+              ></polyline>
+            </svg>
+          </div>
+    </div>
+    <button class="cta" href="{{ url_for('routes.login') }}">
+        <span class="hover-underline-animation"><a href="{{ url_for('routes.login') }}" style="text-decoration: none;"> Voltar para LOGIN </a></span>
+        <svg
+          id="arrow-horizontal"
+          xmlns="http://www.w3.org/2000/svg"
+          width="30"
+          height="10"
+          viewBox="0 0 46 16"
+        >
+          <path
+            id="Path_10"
+            data-name="Path 10"
+            d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+            transform="translate(30)"
+          ></path>
+        </svg>
+      </button>
+      
+</body>
+</html>

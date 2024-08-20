@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>SecureSight - Interface do usuário</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/user-int/user.css') }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
+  <script src="{{ url_for('static', filename='user.js') }}" defer></script>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+  <section class="user-gui">
+    <div class="gui">
+      <div class="bars">
+        <a href="http://localhost:5001/charts?token={{ token }}">
+          <i class="fa-solid fa-square-poll-vertical" style="color: #724ae8;"></i>
+      </a>
+      
+        <div class="profile-menu-container">
+          <div class="profile-icon" onclick="toggleMenu()">
+            <img src="{{url_for('static', filename='images/undraw_male_avatar_g98d.svg')}}" alt="Profile Icon">
+          </div>
+          <div class="profile-menu" id="profileMenu">
+            <ul>
+              <li><a href="#"><i class="fa-solid fa-gear"></i> Editar Conta</a></li>
+              <li><a href="#"><i class="fa-solid fa-file-signature"></i> Licenças</a></li>
+            </ul>
+          </div>
+        </div>
+        <a href="{{url_for('routes.home')}}"><i class="fa-solid fa-right-from-bracket" style="color: #724ae8;"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <main class="user-interface" style="display: flex; justify-content: center; align-items: center; align-content: center; height: 50%; width: auto;">
+    <h3 style="color: white; font-size: 24px; padding: 30px;">Monitoramento Ao Vivo</h3>
+    <div class="video-container">
+    <img id="video-feed" src="http://localhost:5001/video_feed?token={{ token }}" alt="Stream de Vídeo" style="border-radius: 16px; height: 720px; width: 1280px;">
+    </div>
+  </main>
+
+  <button class="chatbot-toggler">
+    <span class="material-symbols-rounded">mode_comment</span>
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <div class="chatbot">
+    <header>
+      <h2>Suporte - Chatbot</h2>
+      <span class="close-btn material-symbols-outlined">close</span>
+    </header>
+    <ul class="chatbox">
+      <li class="chat incoming">
+        <span class="material-symbols-outlined">smart_toy</span>
+        <p>Olá 👋<br>Como posso te ajudar hoje?</p>
+      </li>
+    </ul>
+    <div class="chat-input">
+      <textarea placeholder="Insira sua dúvida" spellcheck="false" required></textarea>
+      <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+  </div>
+
+</body>
+<script src="{{url_for('static', filename='javascript/user-int/user.js')}}"></script>
+<script>
+  function showModal() {
+  document.getElementById('confirmationModal').style.display = 'block';
+}
+
+// Fechar o modal
+function closeModal() {
+  document.getElementById('confirmationModal').style.display = 'none';
+}
+
+// Manipular o envio do formulário de confirmação
+document.getElementById('confirmPasswordForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const password = document.getElementById('confirmPassword').value;
+  fetch('/confirm_password', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ password })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      window.location.href = `http://localhost:5001/charts?token=${data.token}`;
+    } else {
+      document.getElementById('errorMessage').textContent = data.message;
+    }
+  });
+});
+
+// Exibir o modal ao carregar a página
+window.onload = function() {
+  showModal();
+};
+</script>
+</html>

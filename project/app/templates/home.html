@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home/home.css') }}">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSight - Home</title>
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="#home">Início</a></li>
+            <li><a href="#applications">Aplicações</a></li>
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#plans">Planos</a></li>
+
+            <button><a href="{{ url_for('routes.login')}}">Entre ou cadastre-se</a></button>
+        </ul>
+    </header>
+
+    <section id="home" class="banner">
+        <div class="text-content">
+            <h1>Segurança em cada<br><span class="desc">Detalhe</span></h1>
+        
+            <span class="spech">Conheça nossos serviços e garanta a proteção da sua família</span>
+        
+
+            <button>Saiba Mais</button>
+        </div>
+
+        <div class="imagem">
+        <img src="{{ url_for('static', filename='images/cc.svg') }}" alt="">
+        </div>
+    </section>
+
+    <section class="content1">
+        <div class="title">
+            <h1>Gerencie a segurança da sua<br>casa com um único sistema</h1>
+        </div>
+    
+        <div class="cards-container">
+            <div class="cards">
+                <img src="{{ url_for('static', filename='images/Icon.svg') }}" alt="">
+                <h1>Monitoramento 24/7</h1>
+                <span>Garantia de proteção contínua com resposta rápida a qualquer ameaça.</span>
+            </div>
+    
+            <div class="cards">
+                <img src="{{ url_for('static', filename='images/Icon (3).svg') }}" alt="">
+                <h1>Alarmes inteligentes</h1>
+                <span>Receba alertas instantâneos no seu email sempre que algo suspeito for detectado.</span>
+            </div>
+    
+            <div class="cards">
+                <img src="{{ url_for('static', filename='images/Icon (4).svg') }}" alt="">
+                <h1>Controle de acesso avançado</h1>
+                <span>Utilize tecnologia de ponta para gerenciar e monitorar quem entra e sai da sua residência.</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="content2">
+            <div class="imagem2">
+                <img src="{{ url_for('static', filename='images/Frame 35.svg') }}" alt="">
+            </div>
+
+            <div class="text-content">
+                <h1>A importância de investir na<br>Segurança residêncial</h1>
+                <span>Descubra como nossos serviços de segurança podem proteger sua família e seu<br>patrimônio. Com tecnologias de ponta e uma equipe dedicada, oferecemos a proteção que<br> você precisa para viver com tranquilidade.</span>
+                <button>Saiba Mais</button>
+            </div>
+        </div>
+
+        <section id="applications" class="Apps">
+            <div class="title">
+                <h1>Aplicações</h1>
+            </div>
+            <div class="imagem">
+                <img src="{{ url_for('static', filename='images/Counts.svg') }}" alt="">
+            </div>
+        </section>
+        
+
+        <section id="about" class="about-us">
+            <h2>Clientes satisfeitos são nossa prioridade</h2>
+            <p>Nossa missão é garantir a segurança e a tranquilidade dos nossos clientes. Oferecemos soluções de segurança residencial inovadoras e confiáveis, adaptadas às suas necessidades. Com um compromisso inabalável com a qualidade e a satisfação do cliente, protegemos o que você mais valoriza.</p>
+            <div class="blog-posts">
+                <div class="post">
+                    <img src="{{ url_for('static', filename='images/04.-hOn_Tech-Trends_Benessere-abitativo-scaled.jpg') }}" alt="">
+                    <div class="post-text">
+                        <h3>Entendemos que cada lar é único. Por isso, oferecemos uma gama de serviços de segurança personalizados, desde sistemas de alarme e monitoramento até vigilância 24 horas. Nossa tecnologia avançada e nossa equipe dedicada garantem que sua casa esteja sempre protegida.</h3>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="{{ url_for('static', filename='images/mounted-vivint-outdoor-camera-pro.png') }}" alt="">
+                    <div class="post-text">
+                        <h3>Utilizamos a mais recente tecnologia para manter sua casa segura. Nossos sistemas são projetados para detectar e responder a ameaças em tempo real, oferecendo tranquilidade e proteção contínua. A inovação está no centro de tudo o que fazemos.</h3>
+                    </div>
+                </div>
+                <div class="post">
+                    <img src="{{ url_for('static', filename='images/1783c844874e6e83c50e6fcda262027c.png') }}" alt="">
+                    <div class="post-text">
+                        <h3>Nossa equipe é composta por profissionais capacitados e dedicados à sua segurança. Com treinamento e um compromisso com a excelência, nossos especialistas estão sempre prontos para oferecer suporte e garantir que suas necessidades sejam atendidas.</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <main id="team">
+            <section class="team-section">
+                <h2>Nossa Equipe de Desenvolvedores</h2>
+                <p>Conheça os talentosos desenvolvedores que tornam tudo possível.</p>
+                <div class="team-container">
+                    <div class="team-member">
+                        <img src="{{ url_for('static', filename='images/developer1.jpeg') }}" alt="Foto de Daniel Assis">
+                        <h3>Daniel Assis</h3>
+                        <p>Designer<br>Desenvolvedor Front-End<br>Desenvolvedor Back-End (Python)<br>Banco de Dados</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="{{url_for('static', filename='images/developer2.png')}}" alt="Foto de Athos Duarte">
+                        <h3>Athos Duarte</h3>
+                        <p>Desenvolvedor Back-End (Python)<br>Documentação<br></p>
+                    </div>
+                    <div class="team-member">
+                        <img src="{{url_for('static', filename='images/developer3.jpeg')}}" alt="Foto de Lucas">
+                        <h3>Lucas Sena</h3>
+                        <p>Banco de dados<br>Documentação</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="{{url_for('static', filename='images/developer4.jpeg')}}" alt="Foto de André">
+                        <h3>André Lucas</h3>
+                        <p>Desenvolvedor Front-End<br>Documentação</p>
+                    </div>
+                </div>
+            </section>
+        </main>        
+        
+        <div class="plan-title">
+            <h1>Conheça nossos planos</h1>
+        </div>
+
+        <section id="plans" class="plans">
+            
+            <div class="plancards">
+                <div class="planicon">
+                    <img src="{{ url_for('static', filename='images/Group 16.svg') }}" alt="">
+                    <h1><span>Plano</span><br>LifeGuard</h1>
+                </div>
+                <div class="descr">
+                    <span>Pacote de segurança essencial para sua tranquilidade</span>
+                </div>
+                <div class="planprice">
+                    <h1>R$479,90<span>/3mês</span></h1>
+                </div>
+                <div class="include">
+                    <span>O que está incluso?</span>
+                </div>
+                <div class="features">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Monitoramento 24/7</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Suporte via chat</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Verificar vulnerabilidades</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Consultoria de segurança</li>
+                    </ul>
+                </div>
+                <div class="now">
+                    <button class="plan-button"><a href="{{ url_for('routes.login')}}">Assine Agora!</a></button>
+                </div>
+            </div>
+
+            <div class="plancards">
+                <div class="planicon">
+                    <img src="{{ url_for('static', filename='images/Group 16.svg') }}" alt="">
+                    <h1><span>Plano</span><br>SecureShield</h1>
+                </div>
+                <div class="descr">
+                    <span>Proteção completa para residências maiores e famílias ativas</span>
+                </div>
+                <div class="planprice">
+                    <h1>R$799,90<span>/6mês</span></h1>
+                </div>
+                <div class="include">
+                    <span>O que está incluso?</span>
+                </div>
+                <div class="features">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Monitoramento 24/7</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Suporte via chat</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Verificar vulnerabilidades</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Consultoria de segurança</li>
+                    </ul>
+                </div>
+                <div class="now">
+                    <button class="plan-button"><a href="{{ url_for('routes.login')}}">Assine Agora!</a></button>
+                </div>
+            </div>
+
+            <div class="plancards">
+                <div class="planicon">
+                    <img src="{{ url_for('static', filename='images/Group 16.svg') }}" alt="">
+                    <h1><span>Plano</span><br>SafeGuard</h1>
+                </div>
+                <div class="descr">
+                    <span>A segurança mais avançada para sua paz de espirito total</span>
+                </div>
+                <div class="planprice">
+                    <h1>R$1650,00<span>/12mês</span></h1>
+                </div>
+                <div class="include">
+                    <span>O que está incluso?</span>
+                </div>
+                <div class="features">
+                    <ul>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Monitoramento 24/7</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Suporte via chat</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Verificar vulnerabilidades</li>
+                        <li><img src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Consultoria de segurança</li> 
+                    </ul>
+                </div>
+                <div class="now">
+                    <button class="plan-button"><a href="{{ url_for('routes.login')}}">Assine Agora!</a></button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div id="footer_content">
+                <div id="footer_contacts">
+                    <p>Proteção confiável para sua tranquilidade diária.</p>
+    
+                    <div id="footer_social_media">
+                        <a href="#" class="footer-link" id="instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+    
+                        <a href="#" class="footer-link" id="facebook">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+    
+                        <a href="#" class="footer-link" id="whatsapp">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <ul class="footer-list">
+                    <li>
+                        <h3>Sobre nós</h3>
+                    </li>
+                    <li>
+                        <a href="#team" class="footer-link">Equipe</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">Propostas</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">Agradecimentos</a>
+                    </li>
+                </ul>
+    
+                <ul class="footer-list">
+                    <li>
+                        <h3>Projeto</h3>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">Bibliotecas</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">Termos</a>
+                    </li>
+                    <li>
+                        <a href="#" class="footer-link">Empresa</a>
+                    </li>
+                </ul>
+    
+                <div id="footer_subscribe">
+                    <h3>Inscreva-se</h3>
+    
+                    <p>
+                        Insira seu e-mail para receber mais noticias de SecureSight
+                    </p>
+    
+                    <div id="input_group">
+                        <input type="email" id="email">
+                        <button>
+                            <i class="fa-regular fa-envelope"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+    
+            <div id="footer_copyright">
+                &#169
+                2024 all rights reserved
+            </div>
+        </footer>
+
+<script src="{{ url_for('static', filename='javascript/home/home.js') }}"></script>
+</body>
+</html>

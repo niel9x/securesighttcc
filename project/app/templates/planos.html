@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/planos/planos.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureSight - Planos</title>
+</head>
+<body>
+    <div class="plan-title">
+        <h1>Conheça nossos planos</h1>
+    </div>
+
+    <section id="plans" class="plans">
+        
+        <div class="plancards">
+            <div class="planicon">
+                <img src="{{ url_for('static', filename='images/Group 16.svg') }}" alt="">
+                <h1><span>Plano</span><br>LifeGuard</h1>
+            </div>
+            <div class="descr">
+                <span>Pacote de segurança essencial para sua tranquilidade</span>
+            </div>
+            <div class="planprice">
+                <h1>R$479,90<span>3/mês</span></h1>
+            </div>
+            <div class="include">
+                <span>O que está incluso?</span>
+            </div>
+            <div class="features">
+                <ul>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Monitoramento 24/7</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Suporte via chat</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Verificar vulnerabilidades</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Consultoria de segurança</li>
+                </ul>
+            </div>
+            <div class="now">
+                <form action="{{ url_for('routes.choose_plan') }}" method="POST">
+                    <input type="hidden" name="plan" value="LifeGuard">
+                    <button type="submit">Assine agora!</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="plancards">
+            <div class="planicon">
+                <img src="{{ url_for('static', filename='images/Group 16.svg') }}" alt="">
+                <h1><span>Plano</span><br>SecureShield</h1>
+            </div>
+            <div class="descr">
+                <span>Proteção completa para residências maiores e famílias ativas</span>
+            </div>
+            <div class="planprice">
+                <h1>R$799,90<span>6/mês</span></h1>
+            </div>
+            <div class="include">
+                <span>O que está incluso?</span>
+            </div>
+            <div class="features">
+                <ul>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Monitoramento 24/7</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Suporte via chat</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Verificar vulnerabilidades</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Consultoria de segurança</li>
+                </ul>
+            </div>
+            <div class="now">
+                <form action="{{ url_for('routes.choose_plan') }}" method="POST">
+                    <input type="hidden" name="plan" value="SecureShield">
+                    <button type="submit">Assine agora!</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="plancards">
+            <div class="planicon">
+                <img src="{{ url_for('static', filename='images/Group 16.svg') }}" alt="">
+                <h1><span>Plano</span><br>SafeGuard</h1>
+            </div>
+            <div class="descr">
+                <span>A segurança mais avançada para sua paz de espirito total</span>
+            </div>
+            <div class="planprice">
+                <h1>R$1650,00<span>12/mês</span></h1>
+            </div>
+            <div class="include">
+                <span>O que está incluso?</span>
+            </div>
+            <div class="features">
+                <ul>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Monitoramento 24/7</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Suporte via chat</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Verificar vulnerabilidades</li>
+                    <li><img class="verify-icon" src="{{ url_for('static', filename='images/verify-svgrepo-com 5.svg') }}" alt="">Consultoria de segurança</li>
+                </ul>
+            </div>
+            <div class="now">
+                <form action="{{ url_for('routes.choose_plan') }}" method="POST">
+                    <input type="hidden" name="plan" value="SafeGuard">
+                    <button type="submit">Assine agora!</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

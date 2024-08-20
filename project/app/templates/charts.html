@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/charts/charts.css')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>SecureSight - Estatisticas</title>
+</head>
+<body>
+    <section id="estatisticas">
+        <main id="chartset">
+          <section id="alerts">
+            <div class="half black" id="image-container">
+              <img class="image-content" src="{{url_for('static', filename='images/charts.svg')}}" alt="">
+            </div>
+            <div class="half red" id="text-container">
+              <h1>Aqui você pode ver suas<br> estátisticas e notificações!<br> Mantenha-se seguro com<br> SecureSight.
+                <button class="scroll-button" onclick="scrollToNotifications()">
+                    <i class="fas fa-bell"></i> Ver Notificações
+                  </button>
+                <button class="scroll-button" style="margin-top: 20px;" onclick="scrollToduringYear()">
+                    <i class="fa-solid fa-square-poll-vertical"></i> Ver Estatísticas
+                </button>
+                <a href="http://localhost:5001/user-int?token={{ token }}" style="text-decoration: none; color: white;">
+                <button class="scroll-button" style="margin-top: 20px;">
+                 
+                  <i class="fa-solid fa-circle-arrow-left"></i> Voltar para Interface do usuario
+               
+                </button>
+              </a>
+              </h1>
+              
+            </div>
+        </section>
+        </main>
+    
+        <main id="statistics-section">
+          <section>
+            <section class="main-body">
+              <div class="non-charts">
+                <div class="info-box">
+                  <h1>{{ num_alertas }}<span> Alertas</span> esse mês</h1>
+                </div>
+                <div class="info-box">
+                  <h1><span>{{ ultimo_alerta }}</span></h1>
+                </div>
+              </div>
+    
+              <div class="new-notifications" style="background-color: #121212;">
+                <h1>Recentes <i class="fa-solid fa-clock" style="color: #724ae8;"></i></h1>
+                <div class="n-box">
+                  <!-- Notificações de usuário -->
+                  {% for notificacao in notificacoes %}
+                    <span class="ms">
+                      <span class="mm">({{ notificacao.data.strftime('%d-%m') }})</span>
+                      {{ notificacao.mensagem }} Objeto suspeito detectado; Email enviado!
+                    </span>
+                  {% endfor %}
+                </div>
+              </div>
+
+              <h1  id="duringYear" style="color: white; font-size: 20px; text-align: left; padding-left: 100px; padding-top: 100px;"><i class="fa-solid fa-circle-arrow-right" style="fill: white; gap: 20px;"></i>Durante o ano</h1>
+              <span style="font-size: 18px; color: white; padding-left: 100px;">Mês com maior incidência de eventos</span>
+              <div class="charts" style="display: flex; flex-direction: column; justify-content: center; align-items: center; align-content: center;">
+                <canvas id="alertChart" style="height: 600px; width: 200px; padding: 100px;"></canvas>
+            </div>
+              
+            <span style="font-size: 18px; color: white; padding-left: 100px;"><i class="fa-solid fa-cloud-sun"></i>Hora do dia com maior incidência de eventos</span>
+            <div class="charts" style=" justify-content: center; align-items: center; align-content: center;">
+              <canvas id="lineChart" class="chart" style="height: 600px; width: 200px; padding: 100px;"></canvas>
+            </div>
+            </section>
+          </section>
+        </main>
+      </section>
+</body>
+<script>
+ const ctx = document.getElementById('alertChart').getContext('2d');
+
+// Certifique-se de que os dados são formatados corretamente para JSON
+const meses = JSON.parse('{{ meses|tojson|safe }}');
+const quantidadeAlertas = JSON.parse('{{ quantidade_alertas|tojson|safe }}');
+
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: meses,
+        datasets: [{
+            label: 'Número de Alertas',
+            data: quantidadeAlertas,
+            backgroundColor: function(context) {
+                // Gradiente de cores do roxo escuro para mais claro
+                const chart = context.chart;
+                const ctx = chart.ctx;
+                const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+                gradient.addColorStop(0, 'rgba(114, 74, 232, 1)'); // Roxo escuro
+                gradient.addColorStop(1, 'rgba(158, 129, 244, 1)'); // Roxo claro
+                return gradient;
+            },
+            borderColor: 'rgba(128, 0, 128, 1)', // Cor da borda das barras
+            borderWidth: 1,
+            borderRadius: 10 // Bordas arredondadas
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false, // Permite redimensionar o gráfico
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#fff', // Cor do texto da legenda
+                    font: {
+                        size: 16, // Tamanho da fonte da legenda
+                        family: 'Arial', // Fonte da legenda
+                        weight: 'bold' // Peso da fonte da legenda
+                    }
+                }
+            },
+            tooltip: {
+                backgroundColor: 'rgba(0, 0, 0, 0.8)', // Cor de fundo do tooltip
+                titleColor: '#fff', // Cor do título do tooltip
+                bodyColor: '#fff', // Cor do corpo do tooltip
+                borderColor: 'rgba(255, 255, 255, 0.2)', // Cor da borda do tooltip
+                borderWidth: 1 // Largura da borda do tooltip
+            }
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: '#fff', // Cor do texto dos rótulos do eixo x
+                    font: {
+                        size: 14, // Tamanho da fonte dos rótulos do eixo x
+                        family: 'Arial', // Fonte dos rótulos do eixo x
+                        weight: 'bold' // Peso da fonte dos rótulos do eixo x
+                    }
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.2)' // Cor das linhas de grid do eixo x
+                }
+            },
+            y: {
+                ticks: {
+                    color: '#fff', // Cor do texto dos rótulos do eixo y
+                    font: {
+                        size: 14, // Tamanho da fonte dos rótulos do eixo y
+                        family: 'Arial', // Fonte dos rótulos do eixo y
+                        weight: 'bold' // Peso da fonte dos rótulos do eixo y
+                    }
+                },
+                grid: {
+                    color: 'rgba(255, 255, 255, 0.2)' // Cor das linhas de grid do eixo y
+                },
+                beginAtZero: true
+            }
+        }
+    }
+});
+ // Gráfico de linha para alarmes por período do dia
+ const ctxLine = document.getElementById('lineChart').getContext('2d');
+        const labelsPeriodos = JSON.parse('{{ labels_periodos|tojson|safe }}');
+        const quantidadePeriodos = JSON.parse('{{ quantidade_periodos|tojson|safe }}');
+
+        new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: labelsPeriodos,
+                datasets: [{
+                    label: 'Número de Alarmes por Período do Dia',
+                    data: quantidadePeriodos,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff',
+                            font: {
+                                size: 14
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff'
+                    }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            color: '#fff'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)'
+                        }
+                    },
+                    y: {
+                        ticks: {
+                            color: '#fff'
+                        },
+                        grid: {
+                            color: 'rgba(255, 255, 255, 0.2)'
+                        },
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function scrollToNotifications() {
+      document.querySelector('.non-charts').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToduringYear() {
+      document.querySelector('#duringYear').scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+<script src="{{url_for('static', filename='javascript/charts/charts.js')}}"></script>
+</html>
